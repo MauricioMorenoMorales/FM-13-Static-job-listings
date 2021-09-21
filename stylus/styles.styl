@@ -1,6 +1,9 @@
 @import './_reset-styles.styl'
 @import './_tokens.styl'
 
+body
+	font-family ffPrimary
+
 .header
 	&__background
 		background-color desaturatedDarkCyan
@@ -12,15 +15,47 @@
 		display flex
 		justify-content space-between
 		align-items center
+		padding 0 15px
+		border-radius 5px
+		margin 0 10px
+		margin-top -35px
+		background-color white
+		position relative
+		min-height 70px
+		box-shadow shadow
+		margin-bottom 40px
 		&__list
 			display flex
 			align-items center
+			flex-wrap wrap
 			&__item
 				display flex
+				margin-top 10px
+				margin 10px 0px
 				margin-right 20px
 				border-radius 5px
-				border 1px solid black
+				overflow hidden
+				background-color lightGrayishCyan
 				&__name
-					margin 0
+					margin 4px 5px
+					margin-top 7px
+					font-size 1.4rem
+					display flex
+					justify-content center
 				&__close
-					background-color red
+					background-color desaturatedDarkCyan
+					padding 7px
+					display flex
+					align-items center
+					justify-content center
+					&:hover
+						cursor pointer
+						background-color veryDarkGrayishCyan
+		&__clear__button
+			font-size 1.8rem
+			background none
+			border none
+			color veryDarkGrayishCyan
+			&:hover
+				text-decoration underline
+				cursor pointer
