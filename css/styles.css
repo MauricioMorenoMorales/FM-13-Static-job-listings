@@ -63,7 +63,7 @@ body {
   margin-right: 20px;
   border-radius: 5px;
   overflow: hidden;
-  background-color: #effafa;
+  background-color: lightGrayisCyan;
 }
 .header__filters__list__item__name {
   margin: 4px 5px;
@@ -71,6 +71,7 @@ body {
   font-size: 1.4rem;
   display: flex;
   justify-content: center;
+  color: #5ba4a4;
 }
 .header__filters__list__item__close {
   background-color: #5ba4a4;
@@ -151,4 +152,51 @@ body {
   border-top: 1px solid #7b8e8e;
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 10px;
+}
+.job__filters__item {
+  background-color: lightGrayisCyan;
+  margin: 10px 20px 0 0;
+  padding: 3px 10px;
+  padding-top: 5px;
+  border-radius: 3px;
+  color: #5ba4a4;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.job__filters__item:hover {
+  text-decoration: underline;
+}
+@media screen and (min-width: 850px) {
+  .header__filters {
+    max-width: 1200px;
+    margin: 30px auto;
+    margin-top: -35px;
+  }
+  .job {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    max-width: 1200px;
+  }
+  .job__description {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+  .job__description__image {
+    margin: 0;
+    margin-right: 20px;
+  }
+  .job__description__content__data {
+    margin-bottom: 20px;
+  }
+  .job__filters {
+    border-top: none;
+    flex-direction: row-reverse;
+    margin-left: 50px;
+  }
 }

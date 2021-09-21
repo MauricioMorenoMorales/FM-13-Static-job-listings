@@ -35,13 +35,14 @@ body
 				margin-right 20px
 				border-radius 5px
 				overflow hidden
-				background-color lightGrayishCyan
+				background-color lightGrayisCyan
 				&__name
 					margin 4px 5px
 					margin-top 7px
 					font-size 1.4rem
 					display flex
 					justify-content center
+					color desaturatedDarkCyan
 				&__close
 					background-color desaturatedDarkCyan
 					padding 7px
@@ -110,3 +111,42 @@ body
 		border-top 1px solid darkGrayishCyan
 		display flex
 		flex-wrap wrap
+		padding-bottom 10px
+		&__item
+			background-color lightGrayisCyan
+			margin 10px 20px 0 0
+			padding 3px 10px
+			padding-top 5px
+			border-radius 3px
+			color desaturatedDarkCyan
+			font-size 1.3rem
+			font-weight fwBold
+			cursor pointer
+			&:hover
+				text-decoration underline
+
+@media screen and (min-width: 850px)
+	.header__filters
+		max-width 1200px
+		margin 30px auto
+		margin-top -35px
+	.job
+		display flex
+		align-items center
+		justify-content space-between
+		margin 0 auto
+		margin-bottom 30px
+		max-width 1200px
+		&__description
+			display flex
+			align-items center
+			margin-bottom 0
+			&__image
+				margin 0
+				margin-right 20px
+			&__content__data
+				margin-bottom 20px
+		&__filters
+			border-top none
+			flex-direction row-reverse
+			margin-left 50px
