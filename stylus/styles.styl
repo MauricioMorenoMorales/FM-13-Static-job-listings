@@ -59,3 +59,54 @@ body
 			&:hover
 				text-decoration underline
 				cursor pointer
+
+.job
+	border-radius 5px
+	border-left 5px solid desaturatedDarkCyan
+	padding 0 20px
+	margin-top 60px
+	margin-right 10px
+	margin-left 10px
+	box-shadow shadow
+	&__description
+		margin-bottom 20px
+		&__image
+			height 60px
+			width 60px
+			margin-top -30px
+		&__content
+			&__title
+				font-size 1.2rem
+				font-weight fwBold
+				display flex
+				align-items center
+				&__text
+					color desaturatedDarkCyan
+					margin-right 20px
+				&__new
+					background-color desaturatedDarkCyan
+					color white
+					padding 3px 6px
+					padding-top 7px
+					text-transform uppercase
+					border-radius 20px
+					margin-right 10px
+				&__featured
+					background-color veryDarkGrayishCyan
+					color white
+					padding 3px 6px
+					padding-top 7px
+					text-transform uppercase
+					border-radius 20px
+			&__charge
+				font-size 1.5rem
+				font-weight fwBold
+				color veryDarkGrayishCyan
+				margin-top 0
+			&__data
+				font-size 1.3rem
+				color darkGrayishCyan
+	&__filters
+		border-top 1px solid darkGrayishCyan
+		display flex
+		flex-wrap wrap
