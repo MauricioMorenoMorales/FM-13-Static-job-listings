@@ -23,7 +23,8 @@ body
 		position relative
 		min-height 70px
 		box-shadow shadow
-		margin-bottom 40px
+		&.active
+			display flex
 		&__list
 			display flex
 			align-items center
@@ -61,6 +62,9 @@ body
 				text-decoration underline
 				cursor pointer
 
+main
+	margin-top 40px
+
 .job
 	border-radius 5px
 	border-left 5px solid desaturatedDarkCyan
@@ -69,6 +73,7 @@ body
 	margin-right 10px
 	margin-left 10px
 	box-shadow shadow
+	background-color white
 	&__description
 		margin-bottom 20px
 		&__image
