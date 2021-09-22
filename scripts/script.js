@@ -1,22 +1,26 @@
 const $main = document.querySelector('main');
 
 let allExistentData = [];
+let filters = ['Javascript', 'HTML']
 let filteredData = [];
 
 const renderData = data => {
-	if (allExistentData.length === 0) {
+	if (data) {
 		allExistentData = data;
 		filteredData = allExistentData;
 	}
 	let template = '';
 	for (const item of filteredData) {
 		let filters = '';
+		// Creates the filter section
 		for (const language of item.languages) {
-			filters += `<p class="job__filters__item" data-filter="${language.toLowerCase()}">${language}</p>\n`;
+			filters += `<p class="job__filters__item" data-filter="${language}">${language}</p>\n`;
 		}
 		for (const tool of item.tools) {
-			filters += `<p class="job__filters__item" data-filter="${tool.toLowerCase()}">${tool}</p>\n`;
+			filters += `<p class="job__filters__item" data-filter="${tool}">${tool}</p>\n`;
 		}
+		filters += `<p class="job__filters__item" data-filter="${item}">${item.level}</p>\n`;
+		// Create the entire job item
 		template += `
 		<article class="job">
 		<section class="job__description">
@@ -31,9 +35,11 @@ const renderData = data => {
 							: ''
 					}
 				</div>
-				<p class="job__description__content__charge">Senior Frontend Developer</p>
+				<p class="job__description__content__charge">${item.position}</p>
 				<div class="job__description__content__data">
-					<span>1d ago</span> · <span>Part Time</span> · <span>USA only</span>
+					<span>${item.postedAt}</span> · <span>${item.contract}</span> · <span>${
+			item.location
+		}</span>
 				</div>
 			</div>
 		</section>
@@ -51,3 +57,18 @@ document.addEventListener('DOMContentLoaded', async event => {
 	const completeDataJson = await completeData.json();
 	renderData(completeDataJson);
 });
+
+const applyFilter = filter => {
+	filteredData = filteredData.filter(
+		element =>
+			element.level === filter ||
+			element.tools.filter(subElement => subElement === filter).length > 0 ||
+			element.languages.filter(subElement => subElement === filter).length > 0,
+	);
+	renderData();
+};
+
+document.addEventListener('click', event => {
+	applyFilter('CSS');
+});
+

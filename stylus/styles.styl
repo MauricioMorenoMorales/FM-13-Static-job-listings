@@ -37,6 +37,9 @@ body
 				border-radius 5px
 				overflow hidden
 				background-color lightGrayisCyan
+				cursor pointer
+				&:hover .header__filters__list__item__close
+					background veryDarkGrayishCyan
 				&__name
 					margin 4px 5px
 					margin-top 7px
@@ -130,11 +133,15 @@ main
 			&:hover
 				text-decoration underline
 
-@media screen and (min-width: 850px)
+@media screen and (min-width: 870px)
 	.header__filters
 		max-width 1200px
 		margin 30px auto
 		margin-top -35px
+		&--padding-container
+			padding 0 20px
+	main
+		padding 20px
 	.job
 		display flex
 		align-items center

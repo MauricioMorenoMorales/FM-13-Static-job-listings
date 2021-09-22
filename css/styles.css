@@ -66,6 +66,10 @@ body {
   border-radius: 5px;
   overflow: hidden;
   background-color: lightGrayisCyan;
+  cursor: pointer;
+}
+.header__filters__list__item:hover .header__filters__list__item__close {
+  background: #2c3a3a;
 }
 .header__filters__list__item__name {
   margin: 4px 5px;
@@ -174,11 +178,17 @@ main {
 .job__filters__item:hover {
   text-decoration: underline;
 }
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 870px) {
   .header__filters {
     max-width: 1200px;
     margin: 30px auto;
     margin-top: -35px;
+  }
+  .header__filters--padding-container {
+    padding: 0 20px;
+  }
+  main {
+    padding: 20px;
   }
   .job {
     display: flex;
