@@ -8,10 +8,11 @@ let filteredData = [];
 const renderData = data => {
 	if (data) {
 		allExistentData = data;
-		filteredData = allExistentData;
 	}
 	let template = '';
-	for (const item of filteredData) {
+	const dataToRender =
+		filteredData.length === 0 ? allExistentData : filteredData;
+	for (const item of dataToRender) {
 		let filters = '';
 		// Creates the filter section
 		for (const language of item.languages) {
@@ -66,11 +67,6 @@ const applyFilter = () => {
 					element.role === filterName ||
 					element.tools.filter(subElement => subElement === filterName).length >
 						0 ||
-					element.languages.filter(subElement => subElement === filterName)
-						.length > 0,
-			);
-			appliedFiltersArray = allExistentData.filter(
-				element =>
 					element.languages.filter(subElement => subElement === filterName)
 						.length > 0,
 			);
