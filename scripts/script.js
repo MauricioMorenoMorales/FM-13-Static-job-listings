@@ -1,7 +1,8 @@
 const $main = document.querySelector('main');
+const $filterZone = document.querySelector('.header__filters__list');
 
 let allExistentData = [];
-let filters = ['Javascript', 'HTML']
+let filters = [];
 let filteredData = [];
 
 const renderData = data => {
@@ -14,12 +15,13 @@ const renderData = data => {
 		let filters = '';
 		// Creates the filter section
 		for (const language of item.languages) {
-			filters += `<p class="job__filters__item" data-filter="${language}">${language}</p>\n`;
+			filters += `<p class="job__filters__item">${language}</p>\n`;
 		}
 		for (const tool of item.tools) {
-			filters += `<p class="job__filters__item" data-filter="${tool}">${tool}</p>\n`;
+			filters += `<p class="job__filters__item">${tool}</p>\n`;
 		}
-		filters += `<p class="job__filters__item" data-filter="${item}">${item.level}</p>\n`;
+		filters += `<p class="job__filters__item">${item.level}</p>\n`;
+		filters += `<p class="job__filters__item">${item.role}</p>\n`;
 		// Create the entire job item
 		template += `
 		<article class="job">
@@ -52,23 +54,78 @@ const renderData = data => {
 	$main.innerHTML = template;
 };
 
+const applyFilter = () => {
+	//Filters the data to display
+	let firstIteration = true;
+	let appliedFiltersArray = [];
+	for (const filterName of filters) {
+		if (firstIteration) {
+			appliedFiltersArray = allExistentData.filter(
+				element =>
+					element.level === filterName ||
+					element.role === filterName ||
+					element.tools.filter(subElement => subElement === filterName).length >
+						0 ||
+					element.languages.filter(subElement => subElement === filterName)
+						.length > 0,
+			);
+			appliedFiltersArray = allExistentData.filter(
+				element =>
+					element.languages.filter(subElement => subElement === filterName)
+						.length > 0,
+			);
+			firstIteration = false;
+		} else {
+			appliedFiltersArray = appliedFiltersArray.filter(
+				element =>
+					element.level === filterName ||
+					element.role === filterName ||
+					element.tools.filter(subElement => subElement === filterName).length >
+						0 ||
+					element.languages.filter(subElement => subElement === filterName)
+						.length > 0,
+			);
+		}
+	}
+	filteredData = appliedFiltersArray;
+	//renders the filter view
+	let template = '';
+	for (const filterName of filters) {
+		template += `
+			<div class="header__filters__list__item" data-filter="${filterName}">
+				<p class="header__filters__list__item__name">${filterName}</p>
+				<div class="header__filters__list__item__close">
+					<img src="./images/icon-remove.svg" alt="">
+				</div>
+			</div>
+		`;
+	}
+	$filterZone.innerHTML = template;
+	renderData();
+};
+
 document.addEventListener('DOMContentLoaded', async event => {
 	const completeData = await fetch('./data.json');
 	const completeDataJson = await completeData.json();
 	renderData(completeDataJson);
 });
 
-const applyFilter = filter => {
-	filteredData = filteredData.filter(
-		element =>
-			element.level === filter ||
-			element.tools.filter(subElement => subElement === filter).length > 0 ||
-			element.languages.filter(subElement => subElement === filter).length > 0,
-	);
-	renderData();
-};
-
 document.addEventListener('click', event => {
-	applyFilter('CSS');
-});
+	//Adds a filter
+	if (event.target.matches('.job__filters__item')) {
+		filters.push(String(event.target.innerHTML));
+		applyFilter();
+	}
+	//Removes a filter
+	if (
+		event.target.matches('.header__filters__list__item') ||
+		event.target.matches('.header__filters__list__item *')
+	) {
+		const filterName = event.target
+			.closest('.header__filters__list__item')
+			.getAttribute('data-filter');
 
+		filters = filters.filter(element => element !== filterName);
+		applyFilter();
+	}
+});
