@@ -12,7 +12,7 @@ body
 			height 100%
 			width 100%
 	&__filters
-		display flex
+		display none
 		justify-content space-between
 		align-items center
 		padding 0 15px
@@ -36,7 +36,7 @@ body
 				margin-right 20px
 				border-radius 5px
 				overflow hidden
-				background-color lightGrayisCyan
+				background-color filtersBackground
 				cursor pointer
 				&:hover .header__filters__list__item__close
 					background veryDarkGrayishCyan
@@ -121,7 +121,7 @@ main
 		flex-wrap wrap
 		padding-bottom 10px
 		&__item
-			background-color lightGrayisCyan
+			background-color filtersBackground
 			margin 10px 20px 0 0
 			padding 3px 10px
 			padding-top 5px
