@@ -105,6 +105,8 @@ const applyFilter = () => {
 	renderData();
 };
 
+//*Event listeners
+
 document.addEventListener('DOMContentLoaded', async event => {
 	const completeData = await fetch('./data.json');
 	const completeDataJson = await completeData.json();
